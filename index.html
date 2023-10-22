@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Biểu mẫu Đăng ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            transition: background-color 0.2s;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li:hover {
+            background-color: #f2f2f2;
+        }
+        .result-from,.result-To {
+            font-size: 24px; /* Đặt kích thước chữ là 24px */
+            color: #007bff; /* Đặt màu chữ là màu xanh đẹp */
+        }
+        .small-text {
+            font-size: 12px; /* Đặt kích thước chữ là 12px */
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Nhập năm sinh xuất quá trình học tập</h2>
+        <div>
+            <!-- <div class="form-group">
+                <label for="ten">Tên:</label>
+                <input type="text" id="ten" name="ten" placeholder="Nhập tên của bạn" required>
+            </div> -->
+            <div class="form-group">
+                <label for="nam-sinh">Năm Sinh:</label>
+                <input type="number" id="nam-sinh" name="nam-sinh" placeholder="Nhập năm sinh của bạn" required>
+            </div>
+            <button class='XuatQuaTrinhHocTap'>Xuất quá trình học tập</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Quá trình</h2>
+        <ul>
+            <li>Học cấp 1 từ năm: <span class="result-from result-from-1">   </span> đến năm <span class="result-To result-To-1" </li>
+            <li>Học cấp 2 từ năm: <span class="result-from result-from-2">   </span> đến năm <span class="result-To result-To-2" </li>
+            <li>Học cấp 3 từ năm: <span class="result-from result-from-3">   </span> đến năm <span class="result-To result-To-3" </li>
+            <li>Học ĐH từ năm: <span class="result-from result-from-4">   </span> đến năm <span class="result-To result-To-4" </li>
+        </ul>
+        <ul>
+            <p class='small-text'>Tính năm bắt đầu học tiểu học (thường là 6 tuổi)</p>
+            <p class='small-text'>Tính năm bắt đầu học trung học cơ sở (thường là 11 tuổi)</p>
+            <p class='small-text'>Tính năm bắt đầu học trung học phổ thông (thường là 15 tuổi)</p>
+            <p class='small-text'>Tính năm bắt đầu học đại học (thường là 18 tuổi)</p>
+         
+        </ul>
+    </div>
+</body>
+
+<script>
+
+    const XuatQuaTrinhHocTap = document.querySelector('.XuatQuaTrinhHocTap')
+    function tinhQuaTrinhHocTap() {
+        // Lấy giá trị năm sinh từ trường input
+        var namSinh = parseInt(document.getElementById('nam-sinh').value);
+
+        // Tính năm bắt đầu học tiểu học (thường là 6 tuổi)
+        var batDauHocTieuHoc = namSinh + 6;
+
+        // Tính năm bắt đầu học trung học cơ sở (thường là 11 tuổi)
+        var batDauHocTrungHocCoSo = namSinh + 11;
+
+        // Tính năm bắt đầu học trung học phổ thông (thường là 15 tuổi)
+        var batDauHocTrungHocPhoThong = namSinh + 15;
+
+        // Tính năm bắt đầu học đại học (thường là 18 tuổi)
+        var batDauHocDaiHoc = namSinh + 18;
+
+        // Hiển thị kết quả
+        var ketQua = "Quá trình học tập của bạn:\n";
+
+        document.querySelector('.result-from-1').innerText = batDauHocTieuHoc;
+        document.querySelector('.result-To-1').innerText = batDauHocTrungHocCoSo;
+
+        document.querySelector('.result-from-2').innerText = batDauHocTrungHocCoSo;
+        document.querySelector('.result-To-2').innerText = batDauHocTrungHocPhoThong;
+
+        document.querySelector('.result-from-3').innerText = batDauHocTrungHocPhoThong;
+        document.querySelector('.result-To-3').innerText = batDauHocDaiHoc;
+
+        document.querySelector('.result-from-4').innerText = batDauHocDaiHoc;
+        document.querySelector('.result-To-4').innerText = batDauHocDaiHoc + 4;
+    
+        
+    }
+    XuatQuaTrinhHocTap.addEventListener("click",tinhQuaTrinhHocTap)
+</script>
+</html>
